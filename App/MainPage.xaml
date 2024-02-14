@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BomDiaGrupo.MainPage"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
+             BackgroundColor="#d9faa7"
+             Shell.NavBarIsVisible="false"
+             Padding="0">
+  <ScrollView>
+    <VerticalStackLayout
+        IgnoreSafeArea="True"
+        Padding="0"
+        Margin="0"
+        Spacing="25"
+        VerticalOptions="Fill">
+      <VerticalStackLayout.Margin> <!-- Correcao do BUG do MAUI no iOS quando tem NOTCH ou Dynamic Island -->
+        <OnPlatform x:TypeArguments="Thickness">
+          <On Platform="iOS" Value="0,-60,0,0" />
+          <On Platform="Android" Value="0" />
+        </OnPlatform>
+      </VerticalStackLayout.Margin> <!-- Fim da Correcao -->
+
+      <Image
+          Margin="0"
+          HeightRequest="300"
+          Source="flowers.png"
+          Aspect="AspectFill"
+          VerticalOptions="Fill" />
+
+      <Label
+          Text="Olá! Seja Bem-Vindo(a) ao Gerador de Mensagens de Bom Dia para Grupos"
+          Margin="30,0"
+          TextColor="Black"
+          FontSize="18"
+          HorizontalOptions="FillAndExpand"
+          HorizontalTextAlignment="Center"/>
+
+      <Label
+          Text="Para iniciar toque no botão 'GERAR' até uma frase que você gostar aparecer. Então toque no botão 'COMPARTILHAR' para enviar no seu Grupo"
+          TextColor="Black"
+          Margin="20,0"
+          FontSize="14"
+          HorizontalOptions="FillAndExpand"
+          HorizontalTextAlignment="Center"/>
+
+      <Button
+          Text="GERAR" 
+          Clicked="BotatoGerarFoiClicado"
+          BackgroundColor="#512BD4"
+          HeightRequest="50"
+          CornerRadius="25"
+          TextColor="White"
+          Margin="30,0"
+          FontSize="18"
+          FontAttributes="Bold"
+          HorizontalOptions="FillAndExpand"
+          VerticalOptions="CenterAndExpand" />
+
+      <VerticalStackLayout BackgroundColor="#66FFFFFF"
+                           Spacing="0"
+                           Padding="20">
+        <Label
+            Text="Mensagem:"
+            TextColor="Black"
+            Margin="10,0"
+            FontSize="14"
+            FontAttributes="Bold"
+            HorizontalOptions="FillAndExpand"
+            HorizontalTextAlignment="Start"/>
+
+        <Label
+            x:Name="labelMsg"
+            Text="(sua mensagem irá aparecer aqui)"
+            Padding="20"
+            TextColor="Black"
+            FontSize="18"
+            FontAttributes="Bold"
+            HeightRequest="200"
+            HorizontalOptions="FillAndExpand"
+            HorizontalTextAlignment="Center"
+            VerticalOptions="FillAndExpand"
+            VerticalTextAlignment="Center"/>
+      </VerticalStackLayout>
+
+      <Button
+          x:Name="buttonShare"
+          Text="COMPARTILHAR" 
+          Clicked="BotatoCompartilharFoiClicado"
+          BackgroundColor="#512BD4"
+          TextColor="White"
+          Margin="30,0,30,60"
+          HeightRequest="50"
+          CornerRadius="25"
+          FontSize="18"
+          FontAttributes="Bold"
+          HorizontalOptions="FillAndExpand"/>
+    </VerticalStackLayout>
+  </ScrollView>
+</ContentPage>
